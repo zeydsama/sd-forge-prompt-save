@@ -93,9 +93,6 @@ class PromptSaveUserMetadataEditor(UserMetadataEditor):
         self.btn_open_add_prompt.click(
             fn=lambda: gr.update(visible=True),
             outputs=[self.add_box]
-        ).then(
-            fn=None,
-            _js=f"function(){{ popup(gradioApp().getElementById('{self.tabname}_{self.page.extra_networks_tabname}_add_prompt_modal')); }}"
         )
         
         self.add_cancel.click(
@@ -133,7 +130,7 @@ class ExtraNetworksPagePromptSave(ui_extra_networks.ExtraNetworksPage):
         <div id="{tabname}_{self.extra_networks_tabname}_extra_add" class="extra-network-control--refresh"
             style="display: flex; justify-content: center; align-items: center;"
             title="Add new prompt"
-            onclick="document.getElementById('{tabname}_{self.extra_networks_tabname}_add_prompt_btn').click();">
+            onclick="popupId('{tabname}_{self.extra_networks_tabname}_add_prompt_modal'); document.getElementById('{tabname}_{self.extra_networks_tabname}_add_prompt_btn').click();">
             <span style="font-size: 24px; font-weight: bold; line-height: 14px; margin-top: -2px;">+</span>
         </div>
         '''
